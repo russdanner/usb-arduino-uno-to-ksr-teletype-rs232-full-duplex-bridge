@@ -1,3 +1,5 @@
+Send and recieve Teletype Model 33 I/O with your modern PC
+
 **This project contains:**
 
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
