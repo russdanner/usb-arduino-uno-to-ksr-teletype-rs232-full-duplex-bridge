@@ -1,8 +1,10 @@
 **This project contains:**
+
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
 - Related utilities
 
 **Why would anyone want such a thing you ask? Well.. Here's the background:**
+
 A friend, Marcus Mera, sent me home with his KSR-33 Teletype — Automatic Send and Receive — and if you don’t know what one is, it is literally a marvel of mechanical, electrical, and computing theory.
 
 The Teletype is an insanely intricate, clockwork-style machine that can type, encode, transmit, decode, receive, and print. It is one of the “missing links” in computing history: a great point of confluence where mechanical engineering, electrical signaling, and information theory all meet.
