@@ -19,6 +19,7 @@ The firmware is a full-duplex translator: it accepts fast 8-bit bytes from the P
 Optional: breadboard, perfboard, or a small project box for a permanent build.
 
 ## Signal path
+Note: I show DB-25 below because that's what ships with the DeRamp. I use (and detail) a DB9 to RJ12 below.
 
 ```
 PC (USB)
@@ -100,11 +101,21 @@ Key settings in the sketch (change only if you know you need to):
 
 After upload, the Arduino appears as a USB serial device (e.g. `/dev/ttyACM0` on Linux).
 
-Use the host tools at **9600 baud**, not 110 — the Arduino handles Teletype timing:
-
 ```bash
 python3 tools/tty_term.py -d /dev/ttyACM0
 ```
+
+## Figures
+DeRamp to RJ12/11 Straight through
+<img width="335" height="281" alt="image" src="https://github.com/user-attachments/assets/a99cd3af-5b0e-4b41-bb95-125eb857bf90" />
+
+RJ12/11 to DB-25 
+<img width="484" height="822" alt="image" src="https://github.com/user-attachments/assets/88f163b9-fd3b-4539-8381-9db1c3864905" />
+
+RJ12/11 to DB-9 ◄── / ──► MAX3232 ◄── / ──► Arduino Uno
+<img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/b1e23f70-748f-4b8c-b0c9-35a7660b47f1" />
+
+Once you have things going, tighten and enclose everything up so it's nice and clean.
 
 ## Related reading
 
