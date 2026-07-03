@@ -20,9 +20,9 @@ Teletypes do not speak RS-232. They use a 20 mA current loop. That said, there a
 It dind't work. I know. I saw me try and fail (for days)
 
 Long story short: everything will report that you are running at the right baud rate, but the Teletype just cannot quite keep up, and the laptop cannot quite “go slow enough” to frame the signal perfectly for the machine.
-So you can either buy a really expensive cable ... 
+So you can either buy a really expensive cable conversion cable (presumably), _which I refuse to do_.
 
-Or you can spend another $28 and build your own USB-to-RS-232 bridge using an Arduino, a little code, and a MAX232 IC. The PC talks to the Arduino at a comfortable modern baud rate (e.g. 9600), and the Arduino carefully steps the signal down to a real 110 baud for the DeRamp / Teletype interface. Which I think is more fun anyway! CuriousMarc seems to be a leading expert in Teletype restoration. A true master. He figured out years ago that "this" was an issue and built a solution (and some features) using the Ardino Mega, a MAXRS232 chip and some C code. I didn't have the exact same components but he confirmed my suspicions and put me on to the path of success.
+**OR** you can spend another $28 and build your own USB-to-RS-232 bridge using an Arduino, a little code, and a MAX232 IC. The PC talks to the Arduino at a comfortable modern baud rate (e.g. 9600), and the Arduino carefully steps the signal down to a real 110 baud for the DeRamp / Teletype interface. Which I think is more fun anyway! CuriousMarc seems to be a leading expert in Teletype restoration. A true master. He figured out years ago that "this" was an issue and built a solution (and some features) using the Ardino Mega, a MAXRS232 chip and some C code. I didn't have the exact same components but he confirmed my suspicions and put me on to the path of success.
 
 A bit of hacking and voilà! You now have a Teletype that can send and receive from a modern PC, connect to the internet, and participate in all manner of shenanigans. 
 
