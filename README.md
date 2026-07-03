@@ -8,7 +8,7 @@ Try as you may, without spending a lot of money, you will not be able to connect
 
 **This project contains:**
 
-- Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
+- Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility) — see **[WIRING.md](WIRING.md)**
 - Related utilities
 
 
