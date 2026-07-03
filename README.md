@@ -3,9 +3,9 @@
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
 - Related utilities
 
-<img width="512" height="384" alt="image" src="https://github.com/user-attachments/assets/aed3436f-a84c-4449-94dc-cb8de974860e" />
+<img width="25%" alt="image" src="https://github.com/user-attachments/assets/aed3436f-a84c-4449-94dc-cb8de974860e" />
 
-<img width="442" height="590" alt="image" src="https://github.com/user-attachments/assets/55094f76-b534-4759-8982-d45e56f48cb8" />
+<img width="25%" alt="image" src="https://github.com/user-attachments/assets/55094f76-b534-4759-8982-d45e56f48cb8" />
 
 **Why would anyone want such a thing you ask? Well.. Here's the background:**
 
@@ -13,16 +13,16 @@ A friend, Marcus Mera, sent me home with his KSR-33 Teletype — Automatic Send 
 
 The Teletype is an insanely intricate, clockwork-style machine that can type, encode, transmit, decode, receive, and print. It is one of the “missing links” in computing history: a great point of confluence where mechanical engineering, electrical signaling, and information theory all meet.
 
-I/We wanted to connect the Teletype to my machine. I run Linux, so I figured it would be straight forward. I could just grab a USB-to-RS-232 cable, open `/dev/ttyUSB0`, set it to `110 baud`, `7E2`, and start communicating. 
+I/We wanted to connect the Teletype to my machine. It had a RS-232 connector on it, I run Linux, so I figured it would be straight forward. I could just grab a USB-to-RS-232 cable, open `/dev/ttyUSB0`, set it to `110 baud`, `7E2`, and start communicating. 
 
 **Not so fast (no pun intended)**
 Connecting the Teletype to a modern PC turned out to be more challenging than I originally thought.
 
 Teletypes do not speak RS-232. They use a 20 mA current loop. That said, there are conversion kits, like the DeRamp card, and Marcus’s machine already has one. So in theory, you can go from USB to the Teletype over RS-232 with an off-the-shelf cable for a couple of bucks.
 
-<img width="703" height="761" alt="image" src="https://github.com/user-attachments/assets/ec40bada-b0a2-4444-8fc2-dbb51c050c62" />
+<img width="25%" alt="image" src="https://github.com/user-attachments/assets/ec40bada-b0a2-4444-8fc2-dbb51c050c62" />
 
-<img width="498" height="795" alt="image" src="https://github.com/user-attachments/assets/28333001-8395-4bc9-a69d-99d98a2ece55" />
+<img width="25%" height="795" alt="image" src="https://github.com/user-attachments/assets/28333001-8395-4bc9-a69d-99d98a2ece55" />
 
 It dind't work. I know. I saw me try and fail (for days)
 
