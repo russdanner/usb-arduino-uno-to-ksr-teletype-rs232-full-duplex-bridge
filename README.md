@@ -17,7 +17,7 @@ Not so fast (no pun intended)
 
 Teletypes do not speak RS-232. They use a 20 mA current loop. That said, there are conversion kits, like the DeRamp card, and Marcus’s machine already has one. So in theory, you can go from USB to the Teletype over RS-232 with an off-the-shelf cable for a couple of bucks.
 
-It doesn't work. I know. I saw me try and fail (for days)
+It dind't work. I know. I saw me try and fail (for days)
 
 Long story short: everything will report that you are running at the right baud rate, but the Teletype just cannot quite keep up, and the laptop cannot quite “go slow enough” to frame the signal perfectly for the machine.
 So you can either buy a really expensive cable ... 
