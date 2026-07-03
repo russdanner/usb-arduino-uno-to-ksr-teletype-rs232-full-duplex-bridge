@@ -3,6 +3,9 @@
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
 - Related utilities
 
+**Why does this project exist**
+Try as you may, without spending a lot of money, you will not be able to connect your modern PC through a off-the-shelf USB-RS232 cable to a DeRamp equiped Teletype. You need this. 
+
 <img width="25%" alt="image" src="https://github.com/user-attachments/assets/aed3436f-a84c-4449-94dc-cb8de974860e" />
 
 <img width="25%" alt="image" src="https://github.com/user-attachments/assets/55094f76-b534-4759-8982-d45e56f48cb8" />
