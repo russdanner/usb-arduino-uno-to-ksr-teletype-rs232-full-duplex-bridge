@@ -17,7 +17,7 @@ A friend, Marcus Mera, sent me home with his KSR-33 Teletype — Automatic Send 
 
 The Teletype is an insanely intricate, clockwork-style machine that can type, encode, transmit, decode, receive, and print. It is one of the “missing links” in computing history: a great point of confluence where mechanical engineering, electrical signaling, and information theory all meet.
 
-I/We wanted to connect the Teletype to my machine. It had a RS-232 connector on it, I run Linux, so I figured it would be straight forward. I could just grab a USB-to-RS-232 cable, open `/dev/ttyUSB0`, set it to `110 baud`, `7E2`, and start communicating. 
+I/we wanted to connect the Teletype to my machine. It had a RS-232 connector on it, I run Linux, so I figured it would be straight forward. I could just grab a USB-to-RS-232 cable, open `/dev/ttyUSB0`, set it to `110 baud`, `7E2`, and start communicating. 
 
 **Not so fast (no pun intended)**
 Connecting the Teletype to a modern PC turned out to be more challenging than I originally thought.
