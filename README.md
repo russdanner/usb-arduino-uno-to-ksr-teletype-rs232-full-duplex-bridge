@@ -3,6 +3,10 @@
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility)
 - Related utilities
 
+<img width="512" height="384" alt="image" src="https://github.com/user-attachments/assets/aed3436f-a84c-4449-94dc-cb8de974860e" />
+
+<img width="442" height="590" alt="image" src="https://github.com/user-attachments/assets/55094f76-b534-4759-8982-d45e56f48cb8" />
+
 **Why would anyone want such a thing you ask? Well.. Here's the background:**
 
 A friend, Marcus Mera, sent me home with his KSR-33 Teletype — Automatic Send and Receive — and if you don’t know what one is, it is literally a marvel of mechanical, electrical, and computing theory.
@@ -17,12 +21,17 @@ Not so fast (no pun intended)
 
 Teletypes do not speak RS-232. They use a 20 mA current loop. That said, there are conversion kits, like the DeRamp card, and Marcus’s machine already has one. So in theory, you can go from USB to the Teletype over RS-232 with an off-the-shelf cable for a couple of bucks.
 
+<img width="703" height="761" alt="image" src="https://github.com/user-attachments/assets/ec40bada-b0a2-4444-8fc2-dbb51c050c62" />
+
+<img width="498" height="795" alt="image" src="https://github.com/user-attachments/assets/28333001-8395-4bc9-a69d-99d98a2ece55" />
+
 It dind't work. I know. I saw me try and fail (for days)
 
 Long story short: everything will report that you are running at the right baud rate, but the Teletype just cannot quite keep up, and the laptop cannot quite “go slow enough” to frame the signal perfectly for the machine.
 So you can either buy a really expensive cable conversion cable (presumably), _which I refuse to do_.
 
-**OR** you can spend another $28 and build your own USB-to-RS-232 bridge using an Arduino, a little code, and a MAX232 IC. The PC talks to the Arduino at a comfortable modern baud rate (e.g. 9600), and the Arduino carefully steps the signal down to a real 110 baud for the DeRamp / Teletype interface. Which I think is more fun anyway! CuriousMarc seems to be a leading expert in Teletype restoration. A true master. He figured out years ago that "this" was an issue and built a solution (and some features) using the Ardino Mega, a MAXRS232 chip and some C code. I didn't have the exact same components but he confirmed my suspicions and put me on to the path of success.
+**OR** you can spend another $28 and build your own USB-to-RS-232 bridge using an Arduino, a little code, and a MAX232 IC. The PC talks to the Arduino at a comfortable modern baud rate (e.g. 9600), and the Arduino carefully steps the signal down to a real 110 baud for the DeRamp / Teletype interface. Which I think is more fun anyway! 
+> I diagnosed the issue but I didn't come up with the solution. CuriousMarc seems to be a leading expert in Teletype restoration. A true master. He figured out years ago that "this" was an issue and built a solution (and some features) using the Ardino Mega, a MAXRS232 chip and some C code. I didn't have the exact same components but he confirmed my suspicions and put me on to the path of success.
 
 A bit of hacking and voilà! You now have a Teletype that can send and receive from a modern PC, connect to the internet, and participate in all manner of shenanigans. 
 
