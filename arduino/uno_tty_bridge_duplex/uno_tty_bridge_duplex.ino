@@ -15,7 +15,18 @@
 const uint8_t TTY_TX_PIN = 4;
 const uint8_t TTY_RX_PIN = 5;
 const unsigned long BIT_US = 9091;
-const unsigned long CHAR_GAP_MS = 120;
+const unsigned long CHAR_GAP_MS = 130;
+// Minimum CR settle; actual gap scales with columns printed on the line.
+const unsigned long CR_GAP_MIN_MS = 250;
+const unsigned long CR_MS_PER_COL = 8;
+const unsigned long CR_GAP_MAX_MS = 900;
+// Pause after LF before the next print character.
+const unsigned long LF_GAP_MS = 350;
+// Double CR: reliable return without extra paper advance.
+const uint8_t NEWLINE_CR_COUNT = 2;
+const uint8_t NEWLINE_LF_COUNT = 1;
+// Worst-case bytes hostToTty may push for one host byte.
+const uint8_t HOST_EXPAND_MAX = 3;
 const unsigned long HOST_BAUD = 9600;
 
 const size_t BUF_SIZE = 512;
@@ -24,6 +35,8 @@ uint8_t ring[BUF_SIZE];
 size_t head = 0;
 size_t tail = 0;
 unsigned long lastTxMs = 0;
+unsigned long nextGapMs = CHAR_GAP_MS;
+uint8_t printCol = 0;
 
 bool bufFull() {
   return ((head + 1) % BUF_SIZE) == tail;
@@ -45,6 +58,21 @@ bool bufPop(uint8_t *b) {
   *b = ring[tail];
   tail = (tail + 1) % BUF_SIZE;
   return true;
+}
+
+size_t bufFree() {
+  if (head >= tail) {
+    return BUF_SIZE - 1 - (head - tail);
+  }
+  return tail - head - 1;
+}
+
+unsigned long crGapForCol(uint8_t col) {
+  unsigned long gap = CR_GAP_MIN_MS + (unsigned long)col * CR_MS_PER_COL;
+  if (gap > CR_GAP_MAX_MS) {
+    gap = CR_GAP_MAX_MS;
+  }
+  return gap;
 }
 
 void flushHostSerial() {
@@ -168,8 +196,19 @@ bool ttyReceiveWire(uint8_t *out) {
 }
 
 void hostToTty(uint8_t c) {
+  // Teletype needs CR (return) + LF (paper advance). Host may send LF, CR, or CRLF.
+  // Ignore bare CR; expand LF to N×CR + M×LF (defaults: CR CR LF).
+  // Caller must ensure bufFree() >= HOST_EXPAND_MAX so nothing is dropped.
+  if (c == '\r') {
+    return;
+  }
   if (c == '\n') {
-    bufPush('\r');
+    for (uint8_t i = 0; i < NEWLINE_CR_COUNT; i++) {
+      bufPush('\r');
+    }
+    for (uint8_t i = 0; i < NEWLINE_LF_COUNT; i++) {
+      bufPush('\n');
+    }
     return;
   }
   bufPush(c);
@@ -192,15 +231,29 @@ void setup() {
 }
 
 void loop() {
-  while (Serial.available()) {
+  // Backpressure: never read host bytes we cannot queue. Dropped bytes were
+  // the main cause of missing CR/LF and corrupted file prints.
+  while (Serial.available() && bufFree() >= HOST_EXPAND_MAX) {
     hostToTty((uint8_t)Serial.read());
   }
 
-  if (!bufEmpty() && (millis() - lastTxMs) >= CHAR_GAP_MS) {
+  if (!bufEmpty() && (millis() - lastTxMs) >= nextGapMs) {
     uint8_t c;
     if (bufPop(&c)) {
       ttySendWire(c);
       lastTxMs = millis();
+      if (c == '\r') {
+        nextGapMs = crGapForCol(printCol);
+        printCol = 0;
+      } else if (c == '\n') {
+        nextGapMs = LF_GAP_MS;
+        printCol = 0;
+      } else {
+        if (c >= 0x20 && printCol < 255) {
+          printCol++;
+        }
+        nextGapMs = CHAR_GAP_MS;
+      }
     }
   }
 
@@ -208,7 +261,9 @@ void loop() {
   if (ttyReceiveWire(&rx)) {
     Serial.write(rx);
 #if LOCAL_ECHO
-    bufPush(rx);
+    if (bufFree() >= 1) {
+      bufPush(rx);
+    }
 #endif
   }
 }

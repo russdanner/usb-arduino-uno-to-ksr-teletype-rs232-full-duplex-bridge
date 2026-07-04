@@ -99,11 +99,29 @@ Key settings in the sketch (change only if you know you need to):
 
 ## PC connection
 
-After upload, the Arduino appears as a USB serial device (e.g. `/dev/ttyACM0` on Linux).
+After upload, the Arduino appears as a USB serial device (e.g. `/dev/ttyACM0` on Linux). Requires **pyserial** (`pip install pyserial` or `apt install python3-serial`).
+
+### Interactive terminal
+
+Type on the PC keyboard to print on the Teletype; Teletype keyboard input is shown on the PC (and echoed to the printer when firmware `LOCAL_ECHO` is on).
 
 ```bash
 python3 tools/tty_term.py -d /dev/ttyACM0
+python3 tools/tty_term.py -d /dev/ttyACM0 --hex          # RX as hex (debug)
+python3 tools/tty_term.py -d /dev/ttyACM0 --no-local-echo
 ```
+
+### Print a text file
+
+Sends a file at teletype speed with proper line endings (firmware expands each newline to CR/CR/LF and scales carriage-return settle time by line length). Pacing keeps the Arduino ring buffer from overflowing — required for long or wide files (ASCII art, etc.).
+
+```bash
+python3 tools/tty_send.py notes.txt -d /dev/ttyACM0
+python3 tools/tty_send.py tools/cc.txt -d /dev/ttyACM0
+python3 tools/tty_send.py notes.txt -d /dev/ttyACM0 --form-feed
+```
+
+Expect slow prints (minutes for a full page). That is intentional.
 
 ## Figures
 DeRamp to RJ12/11 Straight through

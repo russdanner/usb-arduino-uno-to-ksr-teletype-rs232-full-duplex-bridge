@@ -9,7 +9,10 @@ Try as you may, without spending a lot of money, you will not be able to connect
 **This project contains:**
 
 - Arduino + MAX232 Uno code and wiring for the Teletype 33 (with RS232 compatibility) — see **[WIRING.md](WIRING.md)**
-- Related utilities
+- PC-side tools in **`tools/`**:
+  - **`tty_term.py`** — interactive full-duplex terminal (PC keyboard ↔ Teletype)
+  - **`tty_send.py`** — print a text file on the Teletype at teletype speed (CR/LF pacing, no buffer overruns)
+  - **`bridge_serial.py`** — shared USB-serial helper (9600 baud to the Uno)
 
 
 <img width="25%" alt="image" src="https://github.com/user-attachments/assets/55094f76-b534-4759-8982-d45e56f48cb8" />
@@ -47,3 +50,6 @@ BUT MORE IMPORTANTLY:
 Working up close with this machine has really made me appreciate the long chain of theory, mechanical engineering, electrical engineering, and computing ideas that built on one another to get us to where we are today.
 And where we are today seems far from the teletype: a device with one foot in the modern computing era and the other in the clockwork era. News flash: The Teletype was still in use well into the 1970s. The journey has been long, and it continues still, working its way down to the nanoscale.
 Fascinating and wonderful.
+
+**Related but completely seperate issues**
+- Mechanical troubleshooting notes — see **[MECHANICAL_TROUBLESHOOTING.md](MECHANICAL_TROUBLESHOOTING.md)**
