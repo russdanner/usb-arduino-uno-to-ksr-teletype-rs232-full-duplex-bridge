@@ -1,14 +1,9 @@
- THIS IS A TEST
- RUSS WAS HERE
-123%@=*%%%@=#@@#++#@*=@@@+%+-%#=+##=*@+*@@%@#:%%%%@#*=*#-#%@++*#@%@%321
-                       .:::--=+****######%#*##-.::
-                             ..:-#::=+=*#=::**.
-                                +#.  ..-=.  ::
-                             :+*+-
-                             =*-.
-                             ..
-                        
-                    ====  COLOSSAL CAVE 3D  ====
-                   RE-IMAGINED BY ROBERTA WILLIAMS
-                       THE ONLY WAY OUT IS IN!
+  Hello World
+ Russ was here
+  Ken Sent Me
 
+  1234567890
+  !@#$%^&*()
+  :;,<.>/?"'
+  ABCDEFGHIJKLMNO
+  PQRSTUVWXYZ
