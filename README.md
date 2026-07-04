@@ -1,6 +1,8 @@
 Send and recieve Teletype Model 33 I/O with your modern PC
 
-<img width="80%" alt="image" src="https://github.com/user-attachments/assets/aed3436f-a84c-4449-94dc-cb8de974860e" />
+
+<img width="443" height="590" alt="image" src="https://github.com/user-attachments/assets/5a1e3f58-bf0e-4078-a419-e2ed6f62f899" />
+
 
 **Why does this project exist?**
 
